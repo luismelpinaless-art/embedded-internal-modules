@@ -1,1 +1,62 @@
+#include <buffer.h>
 
+void buffer_init(BUFFER *bff){
+if(bff == NULL){
+	return;
+}
+
+bff->head = 0;
+bff->tail = 0;
+bff->counter = 0;
+memset(bff->data,0,BUFFER_SIZE);
+}
+
+static bool buffer_empty(const BUFFER *bff){
+if(bff == NULL){
+	return false;
+	}
+
+if(bff->counter == 0){
+	return true;
+	}
+return false;
+}
+
+static bool buffer_full(const BUFFER *bff){
+if(bff == NULL){
+	return false;
+	}
+if(bff->counter == BUFFER_SIZE){
+	return true;
+	}
+return false;
+}
+
+void buffer_write(BUFFER *bff, char *data){
+if(bff == NULL || data == NULL){
+	return;
+}
+
+if(buffer_full(bff)){
+	return;
+}
+
+bff->data[bff->head] = *data;
+CYCLE(bff->head);
+bff->counter++;
+}
+
+void buffer_read(BUFFER *bff, char *data){
+if(bff == NULL || data == NULL){
+	return;
+	}
+
+if(buffer_empty(bff)){
+	return;
+}
+
+*data = bff->data[bff->tail];
+CYCLE(bff->tail);
+bff->counter--;
+
+}
