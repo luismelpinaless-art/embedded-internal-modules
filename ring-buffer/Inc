@@ -1,1 +1,22 @@
+#ifndef BUFFER_H
+#define BUFFER_H
+#define BUFFER_SIZE 32
+#define CYCLE(var) (var) = (((var)+1) % BUFFER_SIZE)
 
+#include <stdint.h>
+#include <stdbool.h>
+#include <string.h>
+
+typedef struct{
+char data[BUFFER_SIZE];
+uint8_t head;
+uint8_t tail;
+uint8_t counter;
+}BUFFER;
+
+void buffer_write(BUFFER *bff, char *data);
+void buffer_read(BUFFER *bff, char *data);
+void buffer_init(BUFFER *bff);
+
+
+#endif
