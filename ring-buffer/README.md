@@ -1,4 +1,5 @@
 # Design Decisions
-- This buffer uses a counter variable to determine if it is full or empty.
+- This buffer uses an is_full flag to control the writing and reading of the data. 
 - The implementation of this buffer works with single characters only, not with strings of characters together.
-- The next step in the design process is to implement an `is_full` flag to ensure buffer operations are atomic, making it safe for use with ISRs.
+- It's a support module for communication protocols such as UART, SPI, I2C, etc, which will be developed in another repo.
+
