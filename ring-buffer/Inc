@@ -8,10 +8,10 @@
 #include <string.h>
 
 typedef struct{
-char data[BUFFER_SIZE];
-uint8_t head;
-uint8_t tail;
-uint8_t counter;
+volatile char data[BUFFER_SIZE];
+volatile uint8_t head;
+volatile uint8_t tail;
+volatile bool is_full;
 }BUFFER;
 
 void buffer_write(BUFFER *bff, char *data);
