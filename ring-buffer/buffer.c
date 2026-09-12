@@ -33,13 +33,13 @@ return bff->is_full;
 }
 
 
-void buffer_write(BUFFER *bff, char *data){
+bool buffer_write(BUFFER *bff, char *data){
 if(bff == NULL || data == NULL){
-	return;
+	return false;
 }
 
 if(buffer_full(bff)){
-	return;
+	return false;
 }
 
 bff->data[bff->head] = *data;
@@ -47,6 +47,7 @@ CYCLE(bff->head);
 if(bff->head == bff->tail){
 	bff->is_full = true;
 	}
+return true;	
 }
 
 void buffer_read(BUFFER *bff, char *data){
