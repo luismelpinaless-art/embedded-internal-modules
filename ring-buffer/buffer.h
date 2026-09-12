@@ -14,7 +14,7 @@ volatile uint8_t tail;
 volatile bool is_full;
 }BUFFER;
 
-void buffer_write(BUFFER *bff, char *data);
+bool buffer_write(BUFFER *bff, char *data);
 void buffer_read(BUFFER *bff, char *data);
 void buffer_init(BUFFER *bff);
 
