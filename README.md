@@ -1,7 +1,3 @@
-# embedded-internal-modules
-
-Reusable, hardware-independent building blocks for embedded C: ring buffers, queues, interfaces and more.
-
 ## Purpose
 
 Almost every embedded project ends up rebuilding the same internal pieces: a buffer to move data between an interrupt and the main loop, a queue to hand work between modules, a state machine to organize behavior. This repo collects those pieces as small, self-contained modules, each designed carefully once and reusable everywhere.
