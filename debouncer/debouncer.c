@@ -15,7 +15,7 @@ db->state = ST_DB_IDLE;
 db->event = EVT_DB_IDLE;
 }
 
-static bool read_signal(DEBOUNCER *db, GPIO_TypeDef *port, uint32_t pin){
+static bool read_signal(DEBOUNCER const *db, GPIO_TypeDef *port, uint32_t pin){
 
 if(db == NULL || port == NULL){
 	return false;
@@ -27,7 +27,7 @@ if(HAL_GPIO_ReadPin(port, pin) == GPIO_PIN_SET){
 return false;
 }
 
-void process_debounce(DEBOUNCER *db){
+void process_bounce(DEBOUNCER *db){
 if(db == NULL){
 	return;
 }
@@ -99,3 +99,8 @@ switch (db->state) {
 	}
 }
 
+bool pressed(DEBOUNCER const *db){
+
+return (db->st_before == 0 && db->st_now == 1);
+
+}
