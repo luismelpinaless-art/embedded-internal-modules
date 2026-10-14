@@ -1,4 +1,3 @@
-
 #ifndef DEBOUNCER_H
 #define DEBOUNCER_H
 
@@ -7,6 +6,7 @@
 #include <stdbool.h>
 #include <stm32f4xx_hal.h>
 #include <timer.h>
+
 typedef enum{
 ST_DB_IDLE,
 ST_DB_DEBOUNCE,
@@ -34,5 +34,5 @@ ST_DEBOUNCE state;
 
 void debouncer_init(DEBOUNCER *db, uint32_t pin, GPIO_TypeDef *port);
 void process_bounce(DEBOUNCER *db);
-
+bool pressed(DEBOUNCER const *db);
 #endif
