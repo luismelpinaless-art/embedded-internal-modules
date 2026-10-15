@@ -15,13 +15,13 @@ db->state = ST_DB_IDLE;
 db->event = EVT_DB_IDLE;
 }
 
-static bool read_signal(DEBOUNCER const *db, GPIO_TypeDef *port, uint32_t pin){
+static bool read_signal(DEBOUNCER const *db){
 
-if(db == NULL || port == NULL){
+if(db == NULL){
 	return false;
 }
 
-if(HAL_GPIO_ReadPin(port, pin) == GPIO_PIN_SET){
+if(HAL_GPIO_ReadPin(db->port, db->pin) == GPIO_PIN_SET){
 	return true;
 	}
 return false;
